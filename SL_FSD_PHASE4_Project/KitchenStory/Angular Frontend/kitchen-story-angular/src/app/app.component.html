@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" class="navbar">
+    <div>
+        <a style="margin-left: 1.5rem;" class="logo" routerLink="/home">Kitchen Story</a>
+    </div>
+    <div>
+        <span mat-heading *ngIf="service.loggedIn()">Welcome {{ getLoggedInUser() }}</span>
+        <span mat-heading *ngIf="!service.loggedIn()">Welcome Guest</span>
+        <a class="nav-link" *ngIf="!service.loggedIn()" mat-button routerLink="/login">Login</a>
+        <a class="nav-link" *ngIf="!service.loggedIn()" mat-button routerLink="/register">Register</a>
+        <a class="nav-link" *ngIf="service.loggedIn()" mat-button routerLink="/login" (click)="service.logoutUser()">Logout</a>
+        <a class="nav-link" mat-button routerLink="/admin">Admin</a>
+        <a class="nav-link" mat-button routerLink="/cart"><mat-icon [matBadge]="getItemsCount()" matBadgeColor="accent">shopping_cart</mat-icon></a>
+    </div>
+</mat-toolbar>
+
+<router-outlet></router-outlet>
+
+<mat-toolbar color="accent">
+    <mat-toolbar-row>
+      <span style="margin-left: 40%;">Copyright &copy; Mayur Solanki </span>
+    </mat-toolbar-row>
+</mat-toolbar>
